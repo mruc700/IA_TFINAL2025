@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Registro - Sabores y Raíces{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="auth-card p-4">
+            <div class="text-center mb-4">
+                <img src="{{ url_for('static', filename='images/Logo_SR.jpg') }}" 
+                     alt="Logo Sabores y Raíces" 
+                     class="img-fluid" 
+                     style="max-height: 220px; border-radius: 20px;">
+                <h3 class="fw-bold">Crear Cuenta</h3>
+                <p class="text-muted">Regístrate para comenzar</p>
+            </div>
+            
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.nombre.label(class="form-label") }}
+                    {{ form.nombre(class="form-control", placeholder="Tu nombre completo") }}
+                    {% for error in form.nombre.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", placeholder="tu@email.com") }}
+                    {% for error in form.email.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.telefono.label(class="form-label") }}
+                    {{ form.telefono(class="form-control", placeholder="Tu número de teléfono (opcional)") }}
+                    {% for error in form.telefono.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control") }}
+                    <div class="form-text">La contraseña debe tener al menos 6 caracteres.</div>
+                    {% for error in form.password.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.confirm_password.label(class="form-label") }}
+                    {{ form.confirm_password(class="form-control") }}
+                    {% for error in form.confirm_password.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                {{ form.submit(class="btn btn-primary w-100 py-2 mb-3") }}
+            </form>
+            
+            <div class="text-center">
+                <p class="mb-0">¿Ya tienes cuenta? 
+                    <a href="{{ url_for('auth.login') }}" class="text-decoration-none">Inicia sesión aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

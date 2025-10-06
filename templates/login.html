@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar Sesión - Sabores y Raíces{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="auth-card p-4">
+            <div class="text-center mb-4"> 
+                <img src="{{ url_for('static', filename='images/Logo_SR.jpg') }}" 
+                     alt="Logo Sabores y Raíces" 
+                     class="img-fluid" 
+                     style="max-height: 220px; border-radius: 20px;">
+                <h3 class="fw-bold">Iniciar Sesión</h3>
+                <p class="text-muted">Ingresa a tu cuenta</p>
+            </div>
+            
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", placeholder="tu@email.com") }}
+                    {% for error in form.email.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control") }}
+                    {% for error in form.password.errors %}
+                        <div class="form-text text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3 form-check">
+                    {{ form.remember_me(class="form-check-input") }}
+                    {{ form.remember_me.label(class="form-check-label") }}
+                </div>
+                
+                {{ form.submit(class="btn btn-primary w-100 py-2 mb-3") }}
+            </form>
+            
+            <div class="text-center">
+                <p class="mb-0">¿No tienes cuenta? 
+                    <a href="{{ url_for('auth.register') }}" class="text-decoration-none">Regístrate aquí</a>
+                </p>
+                <a href="#" class="text-muted">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Sabores y Raíces{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="auth-card p-4 mb-4">
+            <div class="text-center mb-4">
+                <img src="{{ url_for('static', filename='images/Logo_SR.jpg') }}" 
+                     alt="Logo Sabores y Raíces" 
+                     class="img-fluid" 
+                     style="max-height: 150px; border-radius: 10px;">
+                <h2 class="fw-bold">¡Bienvenido, {{ nombre }}!</h2>
+                <p class="text-muted">Gestiona tus reservas y pedidos</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{ url_for('reservations.index') }}" class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-calendar-alt"></i> Mis Reservas
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ url_for('menu.index') }}" class="btn btn-success w-100 mb-3">
+                        <i class="fas fa-utensils"></i> Ver Menú
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ url_for('chatbot.chatbot_interface') }}" class="btn btn-info w-100 mb-3">
+                        <i class="fas fa-robot"></i> Chatbot IA
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <a href="{{ url_for('reservations.nueva') }}" class="btn btn-warning w-100">
+                        <i class="fas fa-plus"></i> Nueva Reserva
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary w-100">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de reservas recientes -->
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h5>Reservas Recientes</h5>
+            </div>
+            <div class="card-body">
+                <!-- Aquí se puede agregar una lista de reservas recientes -->
+                <p class="text-muted">Tus reservas aparecerán aquí.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
