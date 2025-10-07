@@ -1,13 +1,1 @@
-flask
-flask-login
-flask-mail
-flask-sqlalchemy
-python-telegram-bot
-ollama
-bcrypt
-python-dotenv
-flask-wtf
-flask-limiter
-requests
-email-validator
-APScheduler==3.10.4
+
